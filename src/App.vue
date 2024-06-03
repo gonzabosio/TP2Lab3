@@ -1,16 +1,17 @@
 <template>
-  <div id="app">
-   
+  <h1>Administrador de videojuegos</h1>
+    <NuevoJuegoForm />
     <TableComponent />
-  </div>
 </template>
 
-<script  >
+<script>
+import NuevoJuegoForm from './components/NuevoJuegoForm.vue';
 import TableComponent from './components/CuadroJuegos.vue';
 
 export default {
   name: 'App',
   components: {
+    NuevoJuegoForm,
     TableComponent
   }
 };
@@ -18,13 +19,14 @@ export default {
 
 <style>
 h1{
-float: left;
+  float: left;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
-  
+  margin: 30px;
 }
 </style>
