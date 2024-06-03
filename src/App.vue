@@ -1,20 +1,26 @@
 <template>
   <h1>Administrador de videojuegos</h1>
-  <NuevoJuegoForm/>
+    <NuevoJuegoForm />
+    <TableComponent />
 </template>
 
 <script>
-import NuevoJuegoForm from './components/NuevoJuegoForm.vue'
+import NuevoJuegoForm from './components/NuevoJuegoForm.vue';
+import TableComponent from './components/CuadroJuegos.vue';
 
 export default {
   name: 'App',
   components: {
-    NuevoJuegoForm
+    NuevoJuegoForm,
+    TableComponent
   }
-}
+};
 </script>
 
 <style>
+h1{
+  float: left;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
