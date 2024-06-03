@@ -1,17 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NuevoJuegoForm @nuevo-juego = "agregarJuego"/>
+    <CuadroJuegos :juegos="listaJuegos"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NuevoJuegoForm from './components/NuevoJuegoForm.vue';
+import CuadroJuegos from './components/CuadroJuegos.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NuevoJuegoForm,
+    CuadroJuegos
+  },
+  data() {
+        return {
+            listaJuegos: []
+        };
+    },
+  methods: {
+    agregarJuego(formData) {
+      this.listaJuegos.push(formData);
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -19,8 +31,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 30px;
 }
 </style>
