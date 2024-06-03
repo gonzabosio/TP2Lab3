@@ -1,7 +1,7 @@
 <template>
+    <h1>Administrador de videojuegos</h1>
+    <h4>Nuevo videojuego</h4>
     <div class="contenidoForm">
-        <h4>Nuevo videojuego</h4>
-        
         <form @submit.prevent="submitForm">
             <div class="form-grupo">
                 <label>Nombre*</label>
@@ -38,6 +38,7 @@
 <script>
     export default {
         name: 'JuegoForm',
+        emits: ['nuevo-juego'],
         data() {
             return {
                 nombre: '',
@@ -59,19 +60,14 @@
                 if(this.estado == '') {
                     this.errors.push('Ingrese el estado del juego')
                 }
-                if(this.puntaje == '') {
-                    if(!this.puntaje >= 0 || !this.puntaje <= 10) {
-                        this.errors.push('Ingrese un puntaje del 1 al 10')
-                    }
-                }
-                else {
+                else if(this.errors.length == 0){
                     const formData = {
                     nombre: this.nombre,
                     plataforma: this.plataforma,
                     estado: this.estado,
                     puntaje: this.puntaje
                     }
-                    console.log(formData);
+                    this.$emit('nuevo-juego', formData)
                     this.resetForm()
                 }
             },
@@ -84,7 +80,11 @@
         }
     }
 </script>
+
 <style>
+    .contenidoForm {
+        display: flex;
+    }
     .form-grupo {
         display: flex;
         align-items: center;

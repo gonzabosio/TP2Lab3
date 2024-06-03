@@ -1,26 +1,32 @@
 <template>
-  <h1>Administrador de videojuegos</h1>
-    <NuevoJuegoForm />
-    <TableComponent />
+    <NuevoJuegoForm @nuevo-juego = "agregarJuego"/>
+    <CuadroJuegos :juegos="listaJuegos"/>
 </template>
 
 <script>
 import NuevoJuegoForm from './components/NuevoJuegoForm.vue';
-import TableComponent from './components/CuadroJuegos.vue';
+import CuadroJuegos from './components/CuadroJuegos.vue';
 
 export default {
   name: 'App',
   components: {
     NuevoJuegoForm,
-    TableComponent
+    CuadroJuegos
+  },
+  data() {
+        return {
+            listaJuegos: []
+        };
+    },
+  methods: {
+    agregarJuego(formData) {
+      this.listaJuegos.push(formData);
+    }
   }
 };
 </script>
 
 <style>
-h1{
-  float: left;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
